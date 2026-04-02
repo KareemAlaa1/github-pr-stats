@@ -72,8 +72,8 @@ export default function CardPreview() {
     const sep = url.includes("?") ? "&" : "?";
     setLoading(true);
     setImgUrl(`${url}${sep}cache=${Date.now()}`);
-    setMarkdownCode(`![GitHub PR Card](${url})`);
-    setHtmlCode(`<img src="${url}" alt="GitHub PR Card" />`);
+    setMarkdownCode(`[![GitHub PR Card](${url})](${url})`);
+    setHtmlCode(`<object type="image/svg+xml" data="${url}" aria-label="GitHub PR Card"></object>`);
   }, [buildEmbedUrl]);
 
   const copyToClipboard = useCallback((text: string, field: string) => {
@@ -190,13 +190,17 @@ export default function CardPreview() {
         <div className="space-y-4">
           <div className="rounded-xl app-panel-soft p-4 min-h-[180px] flex items-center justify-center">
             {imgUrl ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={imgUrl}
-                alt="PR card preview"
-                className="w-full h-auto"
+              <object
+                data={imgUrl}
+                type="image/svg+xml"
+                className="w-full h-auto min-h-[180px]"
+                aria-label="PR card preview"
                 onLoad={() => setLoading(false)}
-              />
+              >
+                <a href={embedUrl} target="_blank" rel="noopener noreferrer" className="text-xs app-muted">
+                  Open card in new tab
+                </a>
+              </object>
             ) : (
               <p className="text-sm app-muted">Enter a username to preview your card</p>
             )}

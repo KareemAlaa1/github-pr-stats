@@ -23,7 +23,7 @@ function renderDetailedRows(stats: PullRequestStats, theme: ThemeConfig): string
       return `
       <g>
         <line x1="20" y1="${y - 18}" x2="780" y2="${y - 18}" stroke="${lineColor}" stroke-opacity="0.35" />
-        <a href="${escapeXml(item.url)}" target="_blank" rel="noopener noreferrer">
+        <a href="${escapeXml(item.url)}" xlink:href="${escapeXml(item.url)}" target="_blank" rel="noopener noreferrer">
           <text x="24" y="${y}" fill="${theme.title}" font-size="14" font-weight="700">#${item.number} ${title}</text>
         </a>
         <text x="24" y="${y + 19}" fill="${theme.text}" font-size="12">${repo}</text>
@@ -43,7 +43,7 @@ function renderCompactRows(stats: PullRequestStats, theme: ThemeConfig): string 
       return `
       <g>
         <line x1="20" y1="${y - 16}" x2="780" y2="${y - 16}" stroke="${theme.border}" stroke-opacity="0.3" />
-        <a href="${escapeXml(item.url)}" target="_blank" rel="noopener noreferrer">
+        <a href="${escapeXml(item.url)}" xlink:href="${escapeXml(item.url)}" target="_blank" rel="noopener noreferrer">
           <text x="24" y="${y}" fill="${theme.title}" font-size="13" font-weight="700">#${item.number} ${title}</text>
         </a>
         <text x="530" y="${y}" fill="${theme.text}" font-size="11">${repo}</text>
@@ -71,7 +71,7 @@ export function renderPrCard(
     : `<text x="24" y="114" fill="${theme.text}" font-size="13">No merged pull requests found for the selected filters.</text>`;
 
   return `
-<svg width="${width}" height="${cardHeight}" viewBox="0 0 ${width} ${cardHeight}" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pull request stats card">
+<svg width="${width}" height="${cardHeight}" viewBox="0 0 ${width} ${cardHeight}" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Pull request stats card">
   <style>
     .subtitle { font-family: 'Segoe UI', Ubuntu, sans-serif; font-size: 12px; fill: ${theme.text}; }
     text { font-family: 'Segoe UI', Ubuntu, sans-serif; }
