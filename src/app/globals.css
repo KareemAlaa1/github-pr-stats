@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+[data-theme="dark"] {
+  --app-bg: #0d1117;
+  --app-panel: #0b1117;
+  --app-panel-alt: #161b22;
+  --app-text: #c9d1d9;
+  --app-muted: #8b949e;
+  --app-border: #30363d;
+  --app-border-soft: #21262d;
+  --app-title: #ffffff;
+  --app-accent: #58a6ff;
+  --app-accent-hover: #79c0ff;
+}
+
+[data-theme="light"] {
+  --app-bg: #f8fafc;
+  --app-panel: #ffffff;
+  --app-panel-alt: #f1f5f9;
+  --app-text: #334155;
+  --app-muted: #64748b;
+  --app-border: #cbd5e1;
+  --app-border-soft: #e2e8f0;
+  --app-title: #0f172a;
+  --app-accent: #2563eb;
+  --app-accent-hover: #1d4ed8;
+}
+
+body {
+  font-family: "Segoe UI", Ubuntu, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.app-body {
+  background: var(--app-bg);
+  color: var(--app-text);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+@layer components {
+  .app-panel {
+    background: var(--app-panel);
+    border: 1px solid var(--app-border);
+  }
+
+  .app-panel-soft {
+    background: var(--app-panel-alt);
+    border: 1px solid var(--app-border);
+  }
+
+  .app-title {
+    color: var(--app-title);
+  }
+
+  .app-muted {
+    color: var(--app-muted);
+  }
+
+  .label-text {
+    @apply block text-xs font-semibold uppercase tracking-wider mb-2;
+    color: var(--app-muted);
+  }
+
+  .input-field {
+    @apply w-full rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-1;
+    border: 1px solid var(--app-border);
+    background: var(--app-panel-alt);
+    color: var(--app-text);
+    --tw-ring-color: color-mix(in oklab, var(--app-accent) 35%, transparent);
+  }
+
+  .input-field::placeholder {
+    color: color-mix(in oklab, var(--app-muted) 70%, transparent);
+  }
+
+  .copy-btn {
+    @apply text-[10px] font-semibold uppercase tracking-wider transition-colors;
+    color: var(--app-accent);
+  }
+
+  .copy-btn:hover {
+    color: var(--app-accent-hover);
+  }
+
+  .theme-btn-active {
+    border-color: var(--app-accent);
+    background: var(--app-panel-alt);
+    color: var(--app-title);
+  }
+
+  .theme-btn {
+    border-color: var(--app-border);
+    color: var(--app-muted);
+  }
+
+  .theme-btn:hover {
+    color: var(--app-text);
+  }
+
+  .theme-checkbox {
+    accent-color: var(--app-accent);
+  }
+}
