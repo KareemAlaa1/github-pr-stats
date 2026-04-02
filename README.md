@@ -50,8 +50,10 @@ Optional:
 Example:
 
 ```md
-![PR Card](http://localhost:3000/api/pr-card?username=MoAdelEzz&style=compact)
+![GitHub PR Card](https://github-pr-stats-three.vercel.app/api/pr-card?username=kareemalaa1)
 ```
+
+![GitHub PR Card](https://github-pr-stats-three.vercel.app/api/pr-card?username=kareemalaa1)
 
 ## Contributing
 
